@@ -21,7 +21,7 @@ Este projeto implementa uma API REST para gerenciar um carrinho de compras, com 
 
 ```bash
 git clone https://github.com/YlsonSantos/RocketStore_back.git
-cd seu-repositorio
+cd RocketStore_back
 ```
 
 ### 2. Instalar dependências
