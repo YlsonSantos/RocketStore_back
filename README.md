@@ -9,7 +9,7 @@ Este projeto implementa uma API REST para gerenciar um carrinho de compras, com 
 - Node.js (versão 16 ou superior recomendada)  
   [Download Node.js](https://nodejs.org/)
 
-- npm (gerenciador de pacotes do Node.js)
+- pnpm (gerenciador de pacotes do Node.js)
 
 - Banco de dados SQLite (já incluído no projeto via dependência Prisma)
 
@@ -26,7 +26,7 @@ cd RocketStore_back
 
 ### 2. Instalar dependências
 
-`npm install`
+`pnpm install`
 
 ### 3. Configurar o banco de dados
 
@@ -44,7 +44,7 @@ npx prisma migrate dev --name init
 
 ### 5. Rodar a aplicação
 
-`npm run start:dev`
+`pnpm run start:dev`
 
 ### 6. Testar a API
 
