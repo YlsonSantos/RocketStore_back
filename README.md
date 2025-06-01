@@ -56,12 +56,10 @@ npx prisma migrate dev --name init
 | PUT    | `/produtos/id`                   | Atualizar produto por ID          |
 | DELETE | `/produtos/id`                   | Deletar produto por ID            |
 | GET    | `/carrinho`                      | Listar itens do carrinho          |
-| GET    | `/carrinho/quantidade-total`     | Mostrar quantidade total de itens |
 | POST   | `/carrinho/adicionar`            | Adicionar item ao carrinho        |
-| PUT    | `/carrinho/atualizar/:produtoId` | Atualizar quantidade no carrinho  |
-| DELETE | `/carrinho/remover/:produtoId`   | Remover item do carrinho          |
+| PUT    | `/carrinho/atualizar/Id`         | Atualizar quantidade no carrinho  |
+| DELETE | `/carrinho/remover/Id`           | Remover item do carrinho          |
 | POST   | `/carrinho/finalizar`            | Finalizar compra                  |
-| GET    | `/carrinho/total`                | Mostrar total da compra           |
 
 
 ### Testando a API com Postman

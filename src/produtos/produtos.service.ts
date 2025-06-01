@@ -21,7 +21,9 @@ export class ProdutosService {
 
   buscarPorId(id: number): Produto {
     const produto = this.produtos.find((p) => p.id === id);
-    if (!produto) throw new NotFoundException('Produto não encontrado');
+    if (!produto) {
+      throw new NotFoundException('Produto não encontrado');
+    }
     return produto;
   }
 
@@ -45,7 +47,9 @@ export class ProdutosService {
 
   deletar(id: number): void {
     const index = this.produtos.findIndex((p) => p.id === id);
-    if (index === -1) throw new NotFoundException('Produto não encontrado');
+    if (index === -1) {
+      throw new NotFoundException('Produto não encontrado');
+    }
     this.produtos.splice(index, 1);
   }
 }

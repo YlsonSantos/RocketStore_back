@@ -16,7 +16,50 @@ export class CarrinhoController {
 
   @Get()
   listarItens() {
-    return this.carrinhoService.listarItensComTotal();
+    const carrinho = this.carrinhoService.listarItensComTotal();
+    const totalFormatado = Number(carrinho.total.toFixed(2));
+
+    const carrinhoFormatado = {
+      itens: carrinho.itens.map((i) => ({
+        produto: {
+          id: i.produto.id,
+          nome: i.produto.nome,
+          descricao: i.produto.descricao,
+          preco: i.produto.preco,
+        },
+        quantidade: i.quantidade,
+      })),
+      total: totalFormatado,
+    };
+
+    return carrinhoFormatado;
+  }
+
+  @Get('carrinho')
+  mostrarCarrinhoCompleto() {
+    const carrinho = this.carrinhoService.listarItensComTotal();
+    const totalFormatado = Number(carrinho.total.toFixed(2));
+
+    const quantidadeTotalItens = carrinho.itens.reduce(
+      (total, item) => total + item.quantidade,
+      0,
+    );
+
+    const carrinhoFormatado = {
+      itens: carrinho.itens.map((i) => ({
+        produto: {
+          id: i.produto.id,
+          nome: i.produto.nome,
+          descricao: i.produto.descricao,
+          preco: i.produto.preco,
+        },
+        quantidade: i.quantidade,
+      })),
+      total: totalFormatado,
+      quantidadeTotalItens,
+    };
+
+    return carrinhoFormatado;
   }
 
   @Post('adicionar')
@@ -37,7 +80,6 @@ export class CarrinhoController {
           nome: i.produto.nome,
           descricao: i.produto.descricao,
           preco: i.produto.preco,
-          quantidade: i.quantidade,
         },
         quantidade: i.quantidade,
       })),
@@ -46,7 +88,7 @@ export class CarrinhoController {
     };
 
     return {
-      mensagem: `Produto adicionado com sucesso`,
+      mensagem: `Produto adicionado ao carrinho com sucesso`,
       carrinho: carrinhoFormatado,
     };
   }
@@ -60,10 +102,37 @@ export class CarrinhoController {
       +produtoId,
       body.quantidade,
     );
+
+    const itemFormatado = {
+      produto: {
+        id: item.produto.id,
+        nome: item.produto.nome,
+        descricao: item.produto.descricao,
+        preco: item.produto.preco,
+      },
+      quantidade: item.quantidade,
+    };
+
+    const carrinho = this.carrinhoService.listarItensComTotal();
+    const totalFormatado = Number(carrinho.total.toFixed(2));
+
+    const carrinhoFormatado = {
+      itens: carrinho.itens.map((i) => ({
+        produto: {
+          id: i.produto.id,
+          nome: i.produto.nome,
+          descricao: i.produto.descricao,
+          preco: i.produto.preco,
+        },
+        quantidade: i.quantidade,
+      })),
+      total: totalFormatado,
+    };
+
     return {
-      mensagem: `Quantidade do produto ${item.produto.nome} atualizada para ${item.quantidade} com sucesso`,
-      item,
-      carrinho: this.carrinhoService.listarItensComTotal(),
+      mensagem: `Quantidade do produto ${itemFormatado.produto.nome} atualizada para ${itemFormatado.quantidade} com sucesso`,
+      item: itemFormatado,
+      carrinho: carrinhoFormatado,
     };
   }
 
@@ -73,9 +142,26 @@ export class CarrinhoController {
       .listarItens()
       .find((i) => i.produto.id === +produtoId);
     this.carrinhoService.removerItem(+produtoId);
+
+    const carrinho = this.carrinhoService.listarItensComTotal();
+    const totalFormatado = Number(carrinho.total.toFixed(2));
+
+    const carrinhoFormatado = {
+      itens: carrinho.itens.map((i) => ({
+        produto: {
+          id: i.produto.id,
+          nome: i.produto.nome,
+          descricao: i.produto.descricao,
+          preco: i.produto.preco,
+        },
+        quantidade: i.quantidade,
+      })),
+      total: totalFormatado,
+    };
+
     return {
       mensagem: `Produto ${item?.produto.nome} removido do carrinho com sucesso`,
-      carrinho: this.carrinhoService.listarItensComTotal(),
+      carrinho: carrinhoFormatado,
     };
   }
 
