@@ -1,6 +1,6 @@
 # Carrinho de Compras - RocketStore com NestJS
 
-Este projeto implementa uma API REST para gerenciar um carrinho de compras, com funcionalidades para adicionar, remover, atualizar produtos, listar itens e finalizar a compra.
+Este projeto é o backend da RocketStore para gerenciar uma loja de produtos e um carrinho de compras, oferecendo funcionalidades essenciais para adicionar, atualizar e remover produtos do carrinho, além de listar itens e calcular o total da compra, tudo isso em uma API REST simples, prática e direta, pensada para facilitar o desenvolvimento inicial de um sistema de vendas sem complexidades ou integrações externas, servindo como uma base sólida para futuras melhorias e implementações mais robustas.
 
 ---
 
