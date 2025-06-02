@@ -4,6 +4,6 @@ import { Controller, Get } from '@nestjs/common';
 export class AppController {
   @Get('mensagem')
   obterMensagem(): string {
-    return 'Olá do AppController!';
+    return 'RocketStore';
   }
 }
